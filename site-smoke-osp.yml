@@ -8,6 +8,7 @@
     register: openstack_info
     tags:
       - osp.smoke
+
   - name: Curl website
     uri:
       url: "http://{{ openstack_info.openstack_servers[0].accessIPv4 }}"
