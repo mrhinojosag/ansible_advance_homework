@@ -10,12 +10,10 @@
       - osp.smoke
 
   - name: Curl website
-    uri:
-      url: "http://{{ openstack_info.openstack_servers[0].accessIPv4 }}"
-      return_content: yes
-      status_code: 200
+    command: curl "http://{{item.public_v4}}"
+    with_items:
+       - "{{ openstack_info.openstack_servers }}"
     register: webpage
-    when: yes
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
