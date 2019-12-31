@@ -1,16 +1,16 @@
 ---
-- name: Create new server instances and attaches them a network and passes metadata to the instance
+- name: Create new server instances and attaches them a network and passes metadata to the instance HW
   os_server:
     cloud: ospcloud
-    name: "{{ item.value.name }}"
-    image: "{{ item.value.image }}"
-    meta: "group={{ instance.value.meta[0].group }},deployment_name={{ instance.value.meta[0].deployment_name }}"
-    flavor: "{{ item.value.flavor }}"
-    security_groups: "{{ item.value.security_group }}"
-    key_name: "{{ item.value.key_name }}"
+    name: "{{ item.0.name }}"
+    image: "{{ item.0.image }}"
+    meta: "group={{ item.1.group }},deployment_name={{ item.1.deployment_name }}"
+    flavor: "{{ item.0.flavor }}"
+    security_groups: "{{ item.0.security_group }}"
+    key_name: "{{ item.0.key_name }}"
     wait: yes
     nics:
-      - net-name: int_network
+    - net-name: int_network
     userdata: |
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
@@ -19,6 +19,7 @@
       cp /tmp/internal.repo /etc/yum.repos.d/internal.repo
   with_subelements:
      - "{{ osp_servers }}"
+     - meta
   register: instanceip
 
 - name: Show instanceip results
