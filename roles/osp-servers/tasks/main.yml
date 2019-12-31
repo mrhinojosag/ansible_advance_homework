@@ -2,12 +2,12 @@
 - name: Create new server instances and attaches them a network and passes metadata to the instance
   os_server:
     cloud: ospcloud
-    name: "{{ item.value.name }}"
-    image: "{{ item.value.image }}"
-    meta: "{{ item.value.meta }}"
-    flavor: "{{ item.value.flavor }}"
-    security_groups: "{{ item.value.security_group }}"
-    key_name: "{{ item.value.key_name }}"
+    name: "{{ item.0.name }}"
+    image: "{{ item.0.image }}"
+    meta: "{{ item.0.meta }}"
+    flavor: "{{ item.0.flavor }}"
+    security_groups: "{{ item.0.security_group }}"
+    key_name: "{{ item.0.key_name }}"
     wait: yes
     nics:
       - net-name: int_network
