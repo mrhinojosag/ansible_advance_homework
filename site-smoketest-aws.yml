@@ -11,6 +11,7 @@
     tags:
       - osp.smoke
 
+  - debug: var=webpage.content
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
