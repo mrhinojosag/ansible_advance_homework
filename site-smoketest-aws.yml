@@ -1,6 +1,8 @@
 - hosts: frontends
   gather_facts: false
   tasks:
+  
+  #open the URL to open index.html and test the service http
   - name: Use Uri module for wrting smoke test.
     uri:
      url: "http://{{ item }}"
@@ -11,8 +13,10 @@
     tags:
       - osp.smoke
 
+  #Print in log the content of index.html
   - debug: var=webpage.results[0].content
 
+  #Check if text 'Ansible has ....' is present in index.html
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
     when: "'Ansible has done its job' not in webpage.results[0].content"
