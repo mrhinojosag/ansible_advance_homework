@@ -1,7 +1,7 @@
 ---
 # handlers file for app-tier
-- name: Restart tomcat service
+- name: Restart {{ payload }} service
   service:
-    name: tomcat
+    name: "{{ payload }}"
     state: restarted 
 
