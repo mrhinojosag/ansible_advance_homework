@@ -20,9 +20,10 @@
     src: index.html.j2
     dest: "{{ tomcat_web_root }}/index.html"
     mode: 0644
+  notify: Restart {{ payload }} service
 
-- name: restart tomcat
-  service:
-    name: "{{ payload }}"
-    state: restarted
+#- name: restart tomcat
+#  service:
+#    name: "{{ payload }}"
+#    state: restarted
 
