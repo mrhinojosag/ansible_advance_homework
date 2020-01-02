@@ -1,3 +1,18 @@
+==== Previous Steps
+
+* After forking the repository, clone the forked repository from your account onto the bastion host of the Ansible Advanced - Homework lab environment under the /root directory
+
+* From the cloned repository, run the site-setup-workstation.yml playbook to provision the network, flavor, security groups, and SSH keys
+
+[source,text]
+----
+[bastion]# git clone https://github.com/<github handler>/ansible_advance_homework
+[bastion]# cd ansible_advance_homework
+[bastion]# OSP_GUID=<OpenStack GUID from mail>
+[bastion]# ansible-playbook site-setup-workstation.yml -e OSP_GUID=${OSP_GUID} --private-key=/root/.ssh/mykey.pem -u <username-company.com>
+----
+
+
 ==== Ansible Tower Config
 
 
