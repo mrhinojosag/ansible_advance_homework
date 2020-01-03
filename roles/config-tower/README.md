@@ -11,11 +11,11 @@ Role Variables
 Dependencies
 ------------
 
-tasks/pre-config-tower.yml
-tasks/post-config-tower.yml
-tasks/ec2_dynamic.yml
-tasks/job_template.yml
-tasks/workflow_template.yml
+- tasks/pre-config-tower.yml
+- tasks/post-config-tower.yml
+- tasks/ec2_dynamic.yml
+- tasks/job_template.yml
+- tasks/workflow_template.yml
 
 Example Playbook
 ----------------
